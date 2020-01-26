@@ -19,7 +19,7 @@ import com.challenge.scheduler.service.ScheduleTaskService;
 import com.challenge.scheduler.task.UserMessageTaskFactory;
 
 /**
- * Controlled everything related to user message, this controller use api v1.
+ * UserMessageController, this controller use api v1.
  */
 
 @RequestMapping("/api/v1/messages/message")
