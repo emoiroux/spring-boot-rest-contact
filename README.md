@@ -7,13 +7,13 @@ A Spring boot RESTful Web API that schedules messages to be printed in the conso
 - Install Eclipse With Spring Tools 4
 - To test the API, you can install SoapUI (https://www.soapui.org/downloads/soapui.html)
 
-I used awaitility (https://github.com/awaitility/awaitility) to perform some Junit test.
+I used awaitility (https://github.com/awaitility/awaitility) to perform a test case.
 
 ## Installing
 
 ### Import the project in Eclipse 
 
-Import Git project from https://github.com/emoiroux/spring-boot-rest-scheduler.git
+Import in Eclipse Git project : https://github.com/emoiroux/spring-boot-rest-message-scheduler.git
  
 ## Run Spring Boot App
 
@@ -33,8 +33,8 @@ With
 
 ## Running the JUnit tests
 
-- Run src/test/java/com.challenge.scheduler.UserMessageIntegrationTest with Junit test 4
-- For more info about, check the documentation comments in the class.
+- Run src/test/java/com.challenge.scheduler.UserMessageIntegrationTest with ** Junit test 4 **
+- For more infos, check the comments.
 
 ## Authors
 
