@@ -7,13 +7,15 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * Configuration of the Rest API, we only need Post in this project.
+ * Configuration of the Rest API, we only need post request in this project.
  */
 
 @Configuration
-public class RestConfiguration {
+public class RestConfiguration
+{
 	@Bean
-	public CorsFilter corsFilter() {
+	public CorsFilter corsFilter()
+	{
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(false);

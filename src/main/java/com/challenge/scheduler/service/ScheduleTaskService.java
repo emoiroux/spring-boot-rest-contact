@@ -14,11 +14,12 @@ import com.challenge.scheduler.task.RunnableTimeTask;
 import com.challenge.scheduler.task.UserMessageTaskFactory;
 
 /**
- * Service to schedule task
+ * A task scheduling service based on Spring framework.
  */
 
 @Service
-public class ScheduleTaskService {
+public class ScheduleTaskService
+{
 
 	private static final int POOL_SIZE = 5;
 	private static final String THREAD_NAME_PREFIX = "ThreadPoolTaskScheduler";
@@ -29,7 +30,8 @@ public class ScheduleTaskService {
 	@Autowired
 	private UserMessageRepository schedulerDB;
 
-	private ScheduleTaskService() {
+	private ScheduleTaskService()
+	{
 		/* Create a new task scheduler */
 		ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
 		scheduler.setThreadNamePrefix(THREAD_NAME_PREFIX);
@@ -39,7 +41,8 @@ public class ScheduleTaskService {
 		this.taskScheduler = scheduler;
 	}
 
-	public static ScheduleTaskService getInstance() {
+	public static ScheduleTaskService getInstance()
+	{
 		if (instance == null)
 			instance = new ScheduleTaskService();
 
@@ -49,27 +52,31 @@ public class ScheduleTaskService {
 	/**
 	 * Re schedule messages when application startup or refresh
 	 */
+	
 	@EventListener({ ContextRefreshedEvent.class })
-	void contextRefreshedEvent() {
-
-		for (UserMessage message : schedulerDB.findAll()) {
+	void contextRefreshedEvent()
+	{
+		for (UserMessage message : schedulerDB.findAll())
+		{
 			schedule(UserMessageTaskFactory.build(message));
 		}
 	}
 
 	/**
 	 * Schedule the task in the system.
-	 * 
 	 * @param task The task to be scheduled.
 	 * @return the user response.
 	 */
-	public Response schedule(RunnableTimeTask task) {
+	
+	public Response schedule(RunnableTimeTask task)
+	{
 		if (task == null || task.getRunnable() == null || task.getScheduleTime() == null)
-			return Response.exception("Some task parameter(s) failed");
-		else {
+			return Response.exception("The task is incorrect");
+		else
+		{
 			taskScheduler.schedule(task.getRunnable(), task.getScheduleTime());
 			System.out.println("Message scheduled at " + task.getScheduleTime().toString());
-			return Response.accepted("task will be performed");
+			return Response.accepted("The task will be performed as requested");
 		}
 	}
 }

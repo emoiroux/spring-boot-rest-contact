@@ -9,35 +9,40 @@ import com.challenge.scheduler.model.UserMessage;
 import com.challenge.scheduler.repository.UserMessageRepository;
 
 /**
- * Service to save, get the userMessage from, to the DB.
+ * User message service.
+ * Implementation of methods that interacts with the repository.
  */
 
 @Service
-public class UserMessageService implements IUserMessageService {
+public class UserMessageService implements IUserMessageService
+{
 
 	@Autowired
 	private UserMessageRepository repository;
 
-	public UserMessageService() {
+	public UserMessageService()
+	{
 	}
 
 	/**
 	 * Save the given user message.
-	 * 
-	 * @param userMessage the user message to be saved
+	 * @param userMessage the user message to be saved.
 	 */
+	
 	@Override
-	public UserMessage save(UserMessage userMessage) {
+	public UserMessage save(UserMessage userMessage)
+	{
 		return repository.save(userMessage);
 	}
 
 	/**
-	 * find the given user message id.
-	 * 
-	 * @param id the user message id to looking for.
+	 * Find the given user message by id.
+	 * @param id the user message id of to user message that we are looking for.
 	 */
+	
 	@Override
-	public Optional<UserMessage> findById(long id) {
+	public Optional<UserMessage> findById(long id)
+	{
 		return repository.findById(id);
 	}
 }

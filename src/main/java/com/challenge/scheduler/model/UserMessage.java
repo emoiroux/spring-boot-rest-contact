@@ -10,12 +10,14 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * User message model. Because the model is simple, I don't really need a DTO.
+ * User message model.
+ * I choose not to use DTO because I find the model simple enough.
  */
 
 @Entity
 @Table(name = "SCHEDULED_MESSAGES")
-public class UserMessage {
+public class UserMessage
+{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,60 +38,73 @@ public class UserMessage {
 	@NotEmpty(message = "message must not be null")
 	private String message;
 
-	public UserMessage() {
+	public UserMessage()
+	{
 	}
 
-	public UserMessage(int hour, int minute, int second, String message) {
+	public UserMessage(int hour, int minute, int second, String message)
+	{
 		this.hour = hour;
 		this.minute = minute;
 		this.second = second;
 		this.message = message;
 	}
 
-	public String getMessage() {
+	public String getMessage()
+	{
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public void setMessage(String message)
+	{
 		this.message = message;
 	}
 
-	public int getHour() {
+	public int getHour()
+	{
 		return hour;
 	}
 
-	public void setHour(int hour) {
+	public void setHour(int hour)
+	{
 		this.hour = hour;
 	}
 
-	public int getMinute() {
+	public int getMinute()
+	{
 		return minute;
 	}
 
-	public void setMinute(int minute) {
+	public void setMinute(int minute)
+	{
 		this.minute = minute;
 	}
 
-	public int getSecond() {
+	public int getSecond()
+	{
 		return second;
 	}
 
-	public void setSecond(int second) {
+	public void setSecond(int second)
+	{
 		this.second = second;
 	}
 
-	public long getId() {
+	public long getId()
+	{
 		return id;
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "UserMessage [id=" + id + ", hour=" + hour + ", minute=" + minute + ", second=" + second + ", message="
 				+ message + "]";
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
@@ -97,7 +112,8 @@ public class UserMessage {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)

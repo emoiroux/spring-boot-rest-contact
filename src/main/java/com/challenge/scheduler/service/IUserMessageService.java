@@ -6,9 +6,11 @@ import com.challenge.scheduler.model.UserMessage;
 
 /**
  * User message service definition.
+ * We use FindById only for test cases.
  */
 
-public interface IUserMessageService {
+public interface IUserMessageService
+{
 	UserMessage save(UserMessage userMessage);
 
 	Optional<UserMessage> findById(long id);

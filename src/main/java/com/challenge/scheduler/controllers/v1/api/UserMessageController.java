@@ -19,12 +19,14 @@ import com.challenge.scheduler.service.ScheduleTaskService;
 import com.challenge.scheduler.task.UserMessageTaskFactory;
 
 /**
- * UserMessageController, this controller use api v1.
+ * UserMessageController, this controller use API v1.
+ * So in the future, it will be easy to add a new version without problem.
  */
 
 @RequestMapping("/api/v1/messages/message")
 @Controller
-public class UserMessageController {
+public class UserMessageController
+{
 
 	@Autowired
 	private IUserMessageService userMessageService;
@@ -32,24 +34,22 @@ public class UserMessageController {
 	@RequestMapping(method = RequestMethod.POST, value = "", consumes = MediaType.APPLICATION_JSON_VALUE)
 
 	/**
-	 * Schedule a new messages.
-	 * 
-	 * @param userMessage The message to schedule in JSon.
+	 * Schedule a new message.
+	 * @param userMessage The message to be scheduled (supposed to get a JSon representation of
+	 *                    UserMessage).
 	 * @return the user response.
 	 */
 	@ResponseBody
-	public ResponseEntity<Response> newSchedule(@Valid @RequestBody UserMessage userMessage) throws ParseException {
+	public ResponseEntity<Response> newSchedule(@Valid @RequestBody UserMessage userMessage) throws ParseException
+	{
 
-		/* Save the message to the DB and get the entity */
+		// Save the message in the DB
 		UserMessage userMessageEntity = userMessageService.save(userMessage);
 
-		/*
-		 * Schedule the message in the system for future execution, if time before now
-		 * => scheduled for next day
-		 */
+		// Schedule the message in the system for future execution.
 		Response response = ScheduleTaskService.getInstance().schedule(UserMessageTaskFactory.build(userMessageEntity));
 
-		/* Response */
+		// Return a user response.
 		return new ResponseEntity<Response>(response, response.getStatus());
 	}
 }

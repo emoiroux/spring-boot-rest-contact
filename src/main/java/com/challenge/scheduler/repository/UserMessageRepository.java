@@ -6,10 +6,11 @@ import org.springframework.stereotype.Repository;
 import com.challenge.scheduler.model.UserMessage;
 
 /**
- * Repository of UserMessage
+ * Repository for UserMessage.
  */
 
 @Repository
-public interface UserMessageRepository extends CrudRepository<UserMessage, Long> {
+public interface UserMessageRepository extends CrudRepository<UserMessage, Long>
+{
 
 }
