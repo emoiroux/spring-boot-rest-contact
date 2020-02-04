@@ -1,16 +1,16 @@
-package com.challenge.scheduler.repository;
+package com.modesttree.contact.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.challenge.scheduler.model.UserMessage;
+import com.modesttree.contact.model.UserContact;
 
 /**
  * Repository for UserMessage.
  */
 
 @Repository
-public interface UserMessageRepository extends CrudRepository<UserMessage, Long>
+public interface UserContactRepository extends CrudRepository<UserContact, Long>
 {
 
 }

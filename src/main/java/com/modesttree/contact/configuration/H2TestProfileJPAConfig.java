@@ -1,4 +1,4 @@
-package com.challenge.scheduler.configuration;
+package com.modesttree.contact.configuration;
 
 import javax.sql.DataSource;
 
